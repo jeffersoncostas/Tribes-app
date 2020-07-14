@@ -22,19 +22,19 @@ Runs the json server in port 3333
 
 
  - Redux
-	 State managment
+	 - State managment
 
  - Redux Saga
-	 API fetch controlled stored 
+	 - API fetch controlled stored 
 
  - Framer Motion
-	Create animations in react.
+	 - Create animations in react.
 	
  - Styled Components
-	CSS in JS
+	 - CSS in JS
 	
  - Typescript
-	Intellisense and avoid errors
+	 - Intellisense and avoid errors
 
  - Axios
-	API calls
+	 - API calls
