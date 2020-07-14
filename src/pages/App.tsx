@@ -5,34 +5,37 @@ import Header from "components/Header";
 import Button from "components/Button";
 import Icon from "components/Icon";
 import GlobalStyle from "styled/GlobalStyle";
-import { Provider } from "react-redux";
-import store from "store";
+import { useDispatch } from "react-redux";
+
 import { useNavigate } from "react-router-dom";
 import checkLocalStorage from "utils/checkLocalStorage";
+import { loadRequest as loadUser } from "../store/ducks/user/index";
 
 const App = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     checkLocalStorage((isLogged) =>
-      !isLogged
-        ? navigate("/login", { replace: true })
-        : navigate("/feed", { replace: true })
+      !isLogged ? navigate("/login", { replace: true }) : getUser()
     );
   }, []);
 
+  const getUser = () => {
+    navigate("/feed/create", { replace: true });
+    dispatch(loadUser());
+  };
   return (
     <>
-      <Provider store={store}>
-        <GlobalStyle />
-        <Header
-          actionButton={
-            <Button>
-              <Icon name="expand" />
-            </Button>
-          }
-        />
-        <Router />
-      </Provider>
+      <GlobalStyle />
+      <Header
+        actionButton={
+          <Button>
+            <Icon name="expand" />
+          </Button>
+        }
+      />
+      <Router />
     </>
   );
 };

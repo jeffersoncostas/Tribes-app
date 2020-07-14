@@ -5,22 +5,31 @@ import { Topic } from "components/Topic";
 import { useSelector, useDispatch } from "react-redux";
 import { ApplicationState } from "store";
 import Icon from "components/Icon";
-import { loadRequest as loadUser } from "store/ducks/user";
 import { loadRequest as loadFeed } from "store/ducks/feed";
 import checkLocalStorage from "utils/checkLocalStorage";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Outlet, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Feed = () => {
   const data = useSelector((state: ApplicationState) => state.feed.data);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const location = useLocation();
   useEffect(() => {
     checkLocalStorage(
       (isLogged) => !isLogged && navigate("/login", { replace: true })
     );
     dispatch(loadFeed());
   }, []);
+
+  const openCreateThread = () => {
+    console.log("create thread");
+    navigate("create", { replace: false });
+  };
+  const checkCreateIsOpen = () => {
+    if (location.pathname.includes("/create")) return true;
+    return false;
+  };
 
   return (
     <Container>
@@ -29,10 +38,15 @@ const Feed = () => {
       ))}
 
       <Footer>
-        <Button variant="rounded" onClick={() => dispatch(loadUser())}>
+        <Button variant="rounded" onClick={() => openCreateThread()}>
           <Icon name="plus" />
         </Button>
       </Footer>
+      <AnimatePresence>
+        <motion.div animate={checkCreateIsOpen() ? "open" : "closed"}>
+          <Outlet />
+        </motion.div>
+      </AnimatePresence>
     </Container>
   );
 };

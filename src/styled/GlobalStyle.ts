@@ -26,7 +26,8 @@ const GlobalStyle = createGlobalStyle`
 
     --z-index-backdrop: 10;
     --z-index-sidebar: 15;
-
+    --z-index-modal:20;
+    
     --header-height: 70px;
   }
   html,body,#root{

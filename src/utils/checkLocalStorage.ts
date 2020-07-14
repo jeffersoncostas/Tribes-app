@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 export default function checkLocalStorage(fn: (isLogged: boolean) => void) {
   const userId = localStorage.getItem("user_id");
   if (!userId) {
