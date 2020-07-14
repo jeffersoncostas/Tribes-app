@@ -7,6 +7,9 @@ import { ReactComponent as ExpandIcon } from "assets/icons/expand.svg";
 import Button from "components/Button";
 import Icon from "components/Icon";
 import { Props } from "./Models";
+import { useSelector } from "react-redux";
+import { ApplicationState } from "../../store/index";
+import { useNavigate } from "react-router-dom";
 
 const sidebarVariants: Variants = {
   open: {
@@ -34,19 +37,17 @@ const sidebarVariants: Variants = {
 };
 const itemVariants: Variants = { open: { opacity: 1 }, closed: { opacity: 0 } };
 
-const mockItems = [
-  { icon: "feed", name: "feed", url: "/feed" },
-  { icon: "friends", name: "amigos", url: "/friends" },
-  { icon: "chat", name: "chat", url: "/chat" },
-  { icon: "notification", name: "notificações", url: "/notification" },
-];
+const defaultItems = [{ icon: null, name: "Sair", url: "/logout" }];
 
 const Sidebar: React.FC<Props> = (props) => {
   const { toggleSidebar } = props;
+  const data = useSelector((state: ApplicationState) => state.user.data);
+  const navigate = useNavigate();
 
   const handleItemClick = (url: string) => {
     console.log(url);
     toggleSidebar();
+    navigate(url);
   };
 
   return (
@@ -59,7 +60,17 @@ const Sidebar: React.FC<Props> = (props) => {
         </Button>
       </Profile.container>
 
-      {mockItems.map((item) => (
+      {data?.modules.map((item) => (
+        <Item.container
+          variants={itemVariants}
+          onClick={() => handleItemClick(item.url)}
+        >
+          <Icon name={item.icon} />
+
+          <Item.text>{item.name}</Item.text>
+        </Item.container>
+      ))}
+      {defaultItems.map((item) => (
         <Item.container
           variants={itemVariants}
           onClick={() => handleItemClick(item.url)}

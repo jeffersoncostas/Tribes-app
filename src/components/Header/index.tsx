@@ -23,7 +23,11 @@ const Header: React.FC<Props> = (props) => {
 
   useEffect(() => {
     console.log(user);
-    if (!user) return;
+    if (!user) {
+      setOpenHeader(false);
+      return;
+    }
+
     setOpenHeader(true);
   }, [user]);
 

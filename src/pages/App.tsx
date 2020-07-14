@@ -22,7 +22,7 @@ const App = () => {
   }, []);
 
   const getUser = () => {
-    navigate("/feed/create", { replace: true });
+    navigate("/feed", { replace: true });
     dispatch(loadUser());
   };
   return (

@@ -25,6 +25,7 @@ export enum UserStateTypes {
   REQUEST = "@user/REQUEST",
   SUCESS = "@user/SUCESS",
   FAILURE = "@user/FAILURE",
+  LOGOUT = "@user/LOGOUT",
 }
 export interface IUserState {
   data: IUser | null;

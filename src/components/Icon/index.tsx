@@ -20,6 +20,7 @@ const iconTypes: IconTypes = {
 
 const Icon: React.FC<Props> = (props) => {
   const { name } = props;
+  if (!name) return null;
   let IconComponent = iconTypes[name];
   return <IconComponent {...props} />;
 };

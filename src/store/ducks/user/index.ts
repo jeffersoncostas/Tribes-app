@@ -8,6 +8,7 @@ const INITIAL_STATE: IUserState = {
   error: false,
 };
 
+export const logoutUser = () => action(UserStateTypes.LOGOUT);
 export const loadRequest = () => action(UserStateTypes.REQUEST);
 export const loadSucess = (data: IUser) =>
   action(UserStateTypes.SUCESS, { data });
@@ -23,6 +24,8 @@ const reducer: Reducer<IUserState> = (state = INITIAL_STATE, action) => {
     case UserStateTypes.FAILURE:
       return { ...state, loading: false, error: true };
 
+    case UserStateTypes.LOGOUT:
+      return { ...state, data: null };
     default:
       return state;
   }
