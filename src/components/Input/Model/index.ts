@@ -7,7 +7,7 @@ export interface Props {
   value?: string | number | readonly string[] | undefined;
   fullWidth?: boolean;
   labelText?: string;
-  type?: "text" | "number" | "password";
+  type?: "text" | "number" | "password" | "email";
   customStyles?: string;
   labelCenter?: boolean;
   textArea?: boolean;

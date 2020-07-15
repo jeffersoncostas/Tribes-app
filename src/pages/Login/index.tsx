@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Container, FormContainer } from "./styled";
+import { FormContainer } from "./styled";
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
 import { TextField } from "components/Input";
 import Button from "components/Button";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loadRequest as loadUser } from "store/ducks/user";
+import { Register } from "./styled";
+import { ContainerLogin as Container } from "styled/shared";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -14,7 +16,7 @@ const Login = () => {
 
   const handleLogin = () => {
     dispatch(loadUser());
-    localStorage.setItem("user_id", "0");
+    localStorage.setItem("token", "0");
     navigate("/feed");
   };
   return (
@@ -45,6 +47,9 @@ const Login = () => {
           LOGIN
         </Button>
       </FormContainer>
+      <Register to="/register">
+        Ainda não possui uma conta? <u>Cadastre-se</u>{" "}
+      </Register>
     </Container>
   );
 };

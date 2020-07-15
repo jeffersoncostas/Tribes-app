@@ -12,15 +12,6 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
 `;
-export const Backdrop = styled(motion.div)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--backdrop-color);
-  z-index: var(--z-index-backdrop);
-`;
 
 export const Modal = {
   container: styled(motion.div)`

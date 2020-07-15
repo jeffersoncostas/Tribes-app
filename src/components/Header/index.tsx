@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Title, Empty, Backdrop } from "./styled";
+import { Container, Title, Empty } from "./styled";
 import { ReactComponent as MenuIcon } from "assets/icons/menu.svg";
 import Button from "components/Button";
 import { motion, useCycle, Variants, AnimatePresence } from "framer-motion";
@@ -7,6 +7,9 @@ import { Props } from "./Model";
 import Sidebar from "components/Sidebar";
 import { useSelector } from "react-redux";
 import { ApplicationState } from "store";
+import { useLocation } from "react-router-dom";
+import { PATHS_WITHOUT_SIDEBAR } from "constants_app";
+import { Backdrop } from "styled/shared";
 
 const headerVariants: Variants = {
   open: { y: 0, opacity: 1 },
@@ -20,10 +23,13 @@ const backdrop: Variants = {
 const Header: React.FC<Props> = (props) => {
   const { actionButton } = props;
   const user = useSelector((state: ApplicationState) => state.user.data);
+  const [isOpenHeader, setOpenHeader] = useState(false);
+  const [isOpenMenu, toggleOpenMenu] = useCycle(false, true);
+  const location = useLocation();
 
   useEffect(() => {
     console.log(user);
-    if (!user) {
+    if (!user || checkLocationPath()) {
       setOpenHeader(false);
       return;
     }
@@ -31,9 +37,9 @@ const Header: React.FC<Props> = (props) => {
     setOpenHeader(true);
   }, [user]);
 
-  const [isOpenHeader, setOpenHeader] = useState(false);
-  const [isOpenMenu, toggleOpenMenu] = useCycle(false, true);
-
+  const checkLocationPath = () => {
+    return PATHS_WITHOUT_SIDEBAR.includes(location.pathname);
+  };
   return (
     <>
       <Container

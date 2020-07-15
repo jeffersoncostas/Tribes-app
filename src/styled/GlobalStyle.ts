@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     --main-bg-color-darker : #191A1D;
     --backdrop-color: rgba(0, 0, 0, 0.35);
     --backdrop-color-darker: rgba(0, 0, 0, 0.65);
-
+    --color-light-purple:  #E4E7FF;
     --color-white: #FFFF;
     --color-white-transparent rgba(255, 255, 255, 0.4);
     --separator-color: #47484C;

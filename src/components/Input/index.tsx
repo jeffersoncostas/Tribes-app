@@ -36,7 +36,7 @@ export const TextField: React.FC<Props> = (props) => {
 
   const Default = () => (
     <Container customStyles={customStyles} fullWidth={fullWidth}>
-      <Label labelCenter={labelCenter}>{labelText}</Label>
+      {labelText && <Label labelCenter={labelCenter}>{labelText}</Label>}
       <InputBase>
         <input
           type={type}

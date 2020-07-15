@@ -12,23 +12,28 @@ export const Default = styled.button<{
   color: var(--color-white);
   border-radius: 8px;
   padding: 8px;
+  font-weight: bold;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: var(--font-size-regular);
+  svg {
+    position: relative;
+    margin-right: 20px;
+  }
   ${({ fullWidth }) => fullWidth && "width:100%;"}
   ${customStyles};
 `;
 
 export const Filled = styled(Default)`
   background: var(--primary-color);
-  color: white;
-  font-weight: bold;
   padding: 20px 10px;
 
   &:active {
     background: var(--primary-color-200);
   }
+  ${customStyles};
 `;
 
 export const Rounded = styled(Default)`
@@ -36,4 +41,7 @@ export const Rounded = styled(Default)`
   height: 50px;
   border-radius: 50%;
   background: var(--primary-color);
+  svg {
+    margin: 0;
+  }
 `;

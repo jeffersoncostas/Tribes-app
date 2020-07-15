@@ -1,5 +1,8 @@
 type variants = "filled" | "rounded" | "default";
 
+export type ButtonVariants = {
+  [key in variants]: React.FunctionComponent;
+};
 export interface Props {
   onClick?:
     | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
@@ -8,4 +11,5 @@ export interface Props {
   variant?: variants;
   customStyles?: string;
   fullWidth?: boolean;
+  startIcon?: JSX.Element;
 }

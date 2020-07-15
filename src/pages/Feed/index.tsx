@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { ApplicationState } from "store";
 import Icon from "components/Icon";
 import { loadRequest as loadFeed } from "store/ducks/feed";
-import checkLocalStorage from "utils/checkLocalStorage";
 import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -16,9 +15,6 @@ const Feed = () => {
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
-    checkLocalStorage(
-      (isLogged) => !isLogged && navigate("/login", { replace: true })
-    );
     dispatch(loadFeed());
   }, []);
 

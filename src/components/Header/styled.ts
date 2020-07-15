@@ -28,13 +28,3 @@ export const Empty = styled.div`
   width: 20px;
   height: 20px;
 `;
-
-export const Backdrop = styled(motion.div)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--backdrop-color);
-  z-index: var(--z-index-backdrop);
-`;

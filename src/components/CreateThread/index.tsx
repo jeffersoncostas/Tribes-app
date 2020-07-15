@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
-import { Container, Backdrop, Modal } from "./styled";
+import { Container, Modal } from "./styled";
 import { useNavigate } from "react-router-dom";
 import ProfilePic from "assets/images/jessicapng.png";
 import { TextField } from "components/Input";
 import { Variants } from "framer-motion";
 import { useDimensions } from "hooks/use-dimensions";
+import { Backdrop } from "styled/shared";
 
 const modalVariants: Variants = {
   open: (height) => ({

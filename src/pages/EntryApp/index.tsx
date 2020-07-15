@@ -1,8 +1,9 @@
 import React from "react";
-import { Container } from "./styled";
+
+import { ContainerLogin } from "../../styled/shared";
 
 const EntryApp = () => {
-  return <Container></Container>;
+  return <ContainerLogin />;
 };
 
 export default EntryApp;
