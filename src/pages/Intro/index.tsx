@@ -34,7 +34,7 @@ const Intro = () => {
   };
   const goToProfile = () => {
     console.log("going to my profile");
-    navigate("/profile");
+    navigate("/feed");
   };
 
   const slides = () => [
